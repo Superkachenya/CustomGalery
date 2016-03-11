@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		8EE36DED1C9319B500369F80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE36DEC1C9319B500369F80 /* main.m */; };
 		8EE36DF01C9319B500369F80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE36DEF1C9319B500369F80 /* AppDelegate.m */; };
-		8EE36DF31C9319B500369F80 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE36DF21C9319B500369F80 /* ViewController.m */; };
+		8EE36DF31C9319B500369F80 /* CGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE36DF21C9319B500369F80 /* CGViewController.m */; };
 		8EE36DF61C9319B500369F80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE36DF41C9319B500369F80 /* Main.storyboard */; };
 		8EE36DF81C9319B500369F80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EE36DF71C9319B500369F80 /* Assets.xcassets */; };
 		8EE36DFB1C9319B500369F80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE36DF91C9319B500369F80 /* LaunchScreen.storyboard */; };
@@ -31,8 +31,8 @@
 		8EE36DEC1C9319B500369F80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8EE36DEE1C9319B500369F80 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8EE36DEF1C9319B500369F80 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8EE36DF11C9319B500369F80 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8EE36DF21C9319B500369F80 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8EE36DF11C9319B500369F80 /* CGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGViewController.h; sourceTree = "<group>"; };
+		8EE36DF21C9319B500369F80 /* CGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CGViewController.m; sourceTree = "<group>"; };
 		8EE36DF51C9319B500369F80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EE36DF71C9319B500369F80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EE36DFA1C9319B500369F80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -83,8 +83,8 @@
 			children = (
 				8EE36DEE1C9319B500369F80 /* AppDelegate.h */,
 				8EE36DEF1C9319B500369F80 /* AppDelegate.m */,
-				8EE36DF11C9319B500369F80 /* ViewController.h */,
-				8EE36DF21C9319B500369F80 /* ViewController.m */,
+				8EE36DF11C9319B500369F80 /* CGViewController.h */,
+				8EE36DF21C9319B500369F80 /* CGViewController.m */,
 				8EE36DF41C9319B500369F80 /* Main.storyboard */,
 				8EE36DF71C9319B500369F80 /* Assets.xcassets */,
 				8EE36DF91C9319B500369F80 /* LaunchScreen.storyboard */,
@@ -155,6 +155,7 @@
 		8EE36DE01C9319B400369F80 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = CG;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Cleveroad;
 				TargetAttributes = {
@@ -211,7 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EE36DF31C9319B500369F80 /* ViewController.m in Sources */,
+				8EE36DF31C9319B500369F80 /* CGViewController.m in Sources */,
 				8EE36DF01C9319B500369F80 /* AppDelegate.m in Sources */,
 				8EE36DED1C9319B500369F80 /* main.m in Sources */,
 			);
@@ -400,6 +401,7 @@
 				8EE36E0C1C9319B500369F80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8EE36E0D1C9319B500369F80 /* Build configuration list for PBXNativeTarget "CustomGallery-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -408,6 +410,7 @@
 				8EE36E0F1C9319B500369F80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

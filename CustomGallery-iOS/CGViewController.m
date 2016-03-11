@@ -6,13 +6,13 @@
 //  Copyright © 2016 Cleveroad. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "CGViewController.h"
 
-@interface ViewController ()
+@interface CGViewController ()
 
 @end
 
-@implementation ViewController
+@implementation CGViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
