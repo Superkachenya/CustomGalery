@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E64DDB71C98672600D384C8 /* CGPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E64DDB61C98672600D384C8 /* CGPhotoCell.m */; };
+		8E64DDBA1C98674600D384C8 /* CGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E64DDB91C98674600D384C8 /* CGViewController.m */; };
+		8E64DDBE1C986A4200D384C8 /* CGStoryboardConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E64DDBD1C986A4200D384C8 /* CGStoryboardConstants.m */; };
 		8EE36DED1C9319B500369F80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE36DEC1C9319B500369F80 /* main.m */; };
 		8EE36DF01C9319B500369F80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE36DEF1C9319B500369F80 /* AppDelegate.m */; };
-		8EE36DF31C9319B500369F80 /* CGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE36DF21C9319B500369F80 /* CGViewController.m */; };
 		8EE36DF61C9319B500369F80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE36DF41C9319B500369F80 /* Main.storyboard */; };
 		8EE36DF81C9319B500369F80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EE36DF71C9319B500369F80 /* Assets.xcassets */; };
 		8EE36DFB1C9319B500369F80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE36DF91C9319B500369F80 /* LaunchScreen.storyboard */; };
@@ -27,12 +29,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E64DDB51C98672600D384C8 /* CGPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGPhotoCell.h; path = Controllers/CustomCell/CGPhotoCell.h; sourceTree = "<group>"; };
+		8E64DDB61C98672600D384C8 /* CGPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGPhotoCell.m; path = Controllers/CustomCell/CGPhotoCell.m; sourceTree = "<group>"; };
+		8E64DDB81C98674600D384C8 /* CGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGViewController.h; path = Controllers/CGViewController.h; sourceTree = "<group>"; };
+		8E64DDB91C98674600D384C8 /* CGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGViewController.m; path = Controllers/CGViewController.m; sourceTree = "<group>"; };
+		8E64DDBC1C986A4200D384C8 /* CGStoryboardConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGStoryboardConstants.h; path = Controllers/StoryboardConstants/CGStoryboardConstants.h; sourceTree = "<group>"; };
+		8E64DDBD1C986A4200D384C8 /* CGStoryboardConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGStoryboardConstants.m; path = Controllers/StoryboardConstants/CGStoryboardConstants.m; sourceTree = "<group>"; };
 		8EE36DE81C9319B400369F80 /* CustomGallery-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CustomGallery-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EE36DEC1C9319B500369F80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8EE36DEE1C9319B500369F80 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8EE36DEF1C9319B500369F80 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8EE36DF11C9319B500369F80 /* CGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGViewController.h; sourceTree = "<group>"; };
-		8EE36DF21C9319B500369F80 /* CGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CGViewController.m; sourceTree = "<group>"; };
 		8EE36DF51C9319B500369F80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EE36DF71C9319B500369F80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EE36DFA1C9319B500369F80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,6 +66,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E64DDB41C9866C300D384C8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8E64DDBF1C986A4B00D384C8 /* StoryboardConstants */,
+				8E64DDB81C98674600D384C8 /* CGViewController.h */,
+				8E64DDB91C98674600D384C8 /* CGViewController.m */,
+				8E64DDBB1C98675300D384C8 /* CustomCell */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		8E64DDBB1C98675300D384C8 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				8E64DDB51C98672600D384C8 /* CGPhotoCell.h */,
+				8E64DDB61C98672600D384C8 /* CGPhotoCell.m */,
+			);
+			name = CustomCell;
+			sourceTree = "<group>";
+		};
+		8E64DDBF1C986A4B00D384C8 /* StoryboardConstants */ = {
+			isa = PBXGroup;
+			children = (
+				8E64DDBC1C986A4200D384C8 /* CGStoryboardConstants.h */,
+				8E64DDBD1C986A4200D384C8 /* CGStoryboardConstants.m */,
+			);
+			name = StoryboardConstants;
+			sourceTree = "<group>";
+		};
 		8EE36DDF1C9319B400369F80 = {
 			isa = PBXGroup;
 			children = (
@@ -83,8 +118,7 @@
 			children = (
 				8EE36DEE1C9319B500369F80 /* AppDelegate.h */,
 				8EE36DEF1C9319B500369F80 /* AppDelegate.m */,
-				8EE36DF11C9319B500369F80 /* CGViewController.h */,
-				8EE36DF21C9319B500369F80 /* CGViewController.m */,
+				8E64DDB41C9866C300D384C8 /* Controller */,
 				8EE36DF41C9319B500369F80 /* Main.storyboard */,
 				8EE36DF71C9319B500369F80 /* Assets.xcassets */,
 				8EE36DF91C9319B500369F80 /* LaunchScreen.storyboard */,
@@ -212,7 +246,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EE36DF31C9319B500369F80 /* CGViewController.m in Sources */,
+				8E64DDBE1C986A4200D384C8 /* CGStoryboardConstants.m in Sources */,
+				8E64DDBA1C98674600D384C8 /* CGViewController.m in Sources */,
+				8E64DDB71C98672600D384C8 /* CGPhotoCell.m in Sources */,
 				8EE36DF01C9319B500369F80 /* AppDelegate.m in Sources */,
 				8EE36DED1C9319B500369F80 /* main.m in Sources */,
 			);
