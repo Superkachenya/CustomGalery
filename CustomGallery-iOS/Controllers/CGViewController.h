@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CGViewController : UIViewController <UICollectionViewDataSource>
+@interface CGViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 
 @end

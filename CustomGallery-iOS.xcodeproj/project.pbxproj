@@ -10,6 +10,8 @@
 		8E64DDB71C98672600D384C8 /* CGPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E64DDB61C98672600D384C8 /* CGPhotoCell.m */; };
 		8E64DDBA1C98674600D384C8 /* CGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E64DDB91C98674600D384C8 /* CGViewController.m */; };
 		8E64DDBE1C986A4200D384C8 /* CGStoryboardConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E64DDBD1C986A4200D384C8 /* CGStoryboardConstants.m */; };
+		8EB36D3A1C998A3C001D2C78 /* CGAssetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB36D391C998A3C001D2C78 /* CGAssetViewController.m */; };
+		8EB36D3E1C99A436001D2C78 /* CGCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB36D3D1C99A436001D2C78 /* CGCollectionViewFlowLayout.m */; };
 		8EE36DED1C9319B500369F80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE36DEC1C9319B500369F80 /* main.m */; };
 		8EE36DF01C9319B500369F80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE36DEF1C9319B500369F80 /* AppDelegate.m */; };
 		8EE36DF61C9319B500369F80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE36DF41C9319B500369F80 /* Main.storyboard */; };
@@ -35,6 +37,10 @@
 		8E64DDB91C98674600D384C8 /* CGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGViewController.m; path = Controllers/CGViewController.m; sourceTree = "<group>"; };
 		8E64DDBC1C986A4200D384C8 /* CGStoryboardConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGStoryboardConstants.h; path = Controllers/StoryboardConstants/CGStoryboardConstants.h; sourceTree = "<group>"; };
 		8E64DDBD1C986A4200D384C8 /* CGStoryboardConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGStoryboardConstants.m; path = Controllers/StoryboardConstants/CGStoryboardConstants.m; sourceTree = "<group>"; };
+		8EB36D381C998A3C001D2C78 /* CGAssetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGAssetViewController.h; path = Controllers/CGAssetViewController.h; sourceTree = "<group>"; };
+		8EB36D391C998A3C001D2C78 /* CGAssetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGAssetViewController.m; path = Controllers/CGAssetViewController.m; sourceTree = "<group>"; };
+		8EB36D3C1C99A436001D2C78 /* CGCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGCollectionViewFlowLayout.h; path = Controllers/CGCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		8EB36D3D1C99A436001D2C78 /* CGCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGCollectionViewFlowLayout.m; path = Controllers/CGCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		8EE36DE81C9319B400369F80 /* CustomGallery-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CustomGallery-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EE36DEC1C9319B500369F80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8EE36DEE1C9319B500369F80 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -70,8 +76,9 @@
 			isa = PBXGroup;
 			children = (
 				8E64DDBF1C986A4B00D384C8 /* StoryboardConstants */,
-				8E64DDB81C98674600D384C8 /* CGViewController.h */,
-				8E64DDB91C98674600D384C8 /* CGViewController.m */,
+				8EB36D3B1C99A3EF001D2C78 /* GridView */,
+				8EB36D381C998A3C001D2C78 /* CGAssetViewController.h */,
+				8EB36D391C998A3C001D2C78 /* CGAssetViewController.m */,
 				8E64DDBB1C98675300D384C8 /* CustomCell */,
 			);
 			name = Controller;
@@ -93,6 +100,17 @@
 				8E64DDBD1C986A4200D384C8 /* CGStoryboardConstants.m */,
 			);
 			name = StoryboardConstants;
+			sourceTree = "<group>";
+		};
+		8EB36D3B1C99A3EF001D2C78 /* GridView */ = {
+			isa = PBXGroup;
+			children = (
+				8E64DDB81C98674600D384C8 /* CGViewController.h */,
+				8E64DDB91C98674600D384C8 /* CGViewController.m */,
+				8EB36D3C1C99A436001D2C78 /* CGCollectionViewFlowLayout.h */,
+				8EB36D3D1C99A436001D2C78 /* CGCollectionViewFlowLayout.m */,
+			);
+			name = GridView;
 			sourceTree = "<group>";
 		};
 		8EE36DDF1C9319B400369F80 = {
@@ -251,6 +269,8 @@
 				8E64DDB71C98672600D384C8 /* CGPhotoCell.m in Sources */,
 				8EE36DF01C9319B500369F80 /* AppDelegate.m in Sources */,
 				8EE36DED1C9319B500369F80 /* main.m in Sources */,
+				8EB36D3A1C998A3C001D2C78 /* CGAssetViewController.m in Sources */,
+				8EB36D3E1C99A436001D2C78 /* CGCollectionViewFlowLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

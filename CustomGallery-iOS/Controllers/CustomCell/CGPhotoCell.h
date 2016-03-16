@@ -10,6 +10,6 @@
 
 @interface CGPhotoCell : UICollectionViewCell
 
-- (void)configureCellWithImage:(UIImage*)image;
-
+- (void)configureCellWithImage:(UIImage *)image;
+- (CGSize)targetSize;
 @end

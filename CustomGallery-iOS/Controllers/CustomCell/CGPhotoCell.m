@@ -16,8 +16,21 @@
 
 @implementation CGPhotoCell
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    
+    self.photoThumb.image = nil;
+}
+
 - (void)configureCellWithImage:(UIImage *)image {
     self.photoThumb.image = image;
+}
+
+- (CGSize)targetSize {
+    CGFloat scale = [UIScreen mainScreen].scale;
+    CGSize targetSize = CGSizeMake(CGRectGetWidth(self.photoThumb.bounds) * scale,
+                                   CGRectGetHeight(self.photoThumb.bounds) * scale);
+    return targetSize;
 }
 
 @end
