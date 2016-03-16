@@ -19,13 +19,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-    options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
-    options.networkAccessAllowed = YES;
+    
     [[PHImageManager defaultManager]requestImageForAsset:self.asset
                                               targetSize:[self targetSize]
                                              contentMode:PHImageContentModeAspectFit
-                                                 options:options
+                                                 options:nil
                                            resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
                                                if (result) {
                                                    self.imageView.image = result;
