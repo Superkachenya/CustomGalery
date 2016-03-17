@@ -49,4 +49,11 @@
     return self.imageView;
 }
 
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
+    if (scale == scrollView.minimumZoomScale) {
+        self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    } else {
+        self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    }
+}
 @end

@@ -53,7 +53,8 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PHAsset *asset = self.assetsFetchResults[indexPath.item];
-    CGPhotoCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier forIndexPath:indexPath];
+    CGPhotoCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
+                                                                       forIndexPath:indexPath];
     [self.imageManager requestImageForAsset:asset
                                  targetSize:[cell targetSize]
                                 contentMode:PHImageContentModeAspectFill
