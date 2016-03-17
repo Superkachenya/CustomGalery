@@ -7,6 +7,8 @@
 //
 
 #import "CGPhotoCell.h"
+#import "CGInstaPhoto.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface CGPhotoCell ()
 
@@ -22,8 +24,9 @@
     self.photoThumb.image = nil;
 }
 
-- (void)configureCellWithImage:(UIImage *)image {
-    self.photoThumb.image = image;
+- (void)configureCellWithImage:(CGInstaPhoto *)photo {
+    NSURL *url = [NSURL URLWithString:photo.thumbnailPhoto];
+    [self.photoThumb sd_setImageWithURL:url];
 }
 
 - (CGSize)targetSize {

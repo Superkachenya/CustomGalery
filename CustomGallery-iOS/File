@@ -1,0 +1,76 @@
+
+
+GRID VIEW
+
+//- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+//    [self updateCashedAssetAtIndexPath:indexPath];
+//}
+//- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+//    [self resetCachedAssetsAtIndexPath:indexPath];
+//}
+//#pragma mark - Cache methods
+//
+//- (void)updateCashedAssetAtIndexPath:(NSIndexPath *)indexPath {
+//    PHAsset *asset = self.assetsFetchResults[indexPath.item];
+//    [self.imageManager startCachingImagesForAssets:@[asset]
+//                                        targetSize:AssetGridThumbnailSize
+//                                       contentMode:PHImageContentModeAspectFill
+//                                           options:nil];
+//}
+//
+//- (void)resetCachedAssetsAtIndexPath:(NSIndexPath *)indexPath {
+//    PHAsset *asset = self.assetsFetchResults[indexPath.item];
+//    [self.imageManager stopCachingImagesForAssets:@[asset]
+//                                       targetSize:AssetGridThumbnailSize
+//                                      contentMode:PHImageContentModeAspectFill
+//                                          options:nil];
+//}
+//
+
+
+//    PHAsset *asset = self.assetsFetchResults[indexPath.item];
+//    cell.representedAssetIdentifier = asset.localIdentifier;
+//    AssetGridThumbnailSize = [cell targetSize];
+//    [self.imageManager requestImageForAsset:asset
+//                                 targetSize:AssetGridThumbnailSize
+//                                contentMode:PHImageContentModeAspectFill
+//                                    options:nil
+//                              resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+//                                  if ([cell.representedAssetIdentifier isEqualToString:asset.localIdentifier]) {
+//                                      [cell configureCellWithImage:result];
+//                                  }
+//                              }];
+
+static CGSize AssetGridThumbnailSize;
+
+//    return self.assetsFetchResults.count;
+
+self.assetsFetchResults = [CGPersistanceDataSource galleryPhotoFetchResult];
+self.imageManager = [PHCachingImageManager new];
+
+@property (strong, nonatomic) PHFetchResult *assetsFetchResults;
+@property (strong, nonatomic) PHCachingImageManager *imageManager;
+assetViewController.asset = self.assetsFetchResults[indexPath.item];
+
+
+IMAGE VIEW
+
+[[PHImageManager defaultManager]requestImageForAsset:self.asset
+targetSize:[self targetSize]
+contentMode:PHImageContentModeAspectFit
+options:nil
+resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+if (result) {
+self.imageView.image = result;
+}
+}];
+
+
+
+- (CGSize)targetSize {
+CGFloat scale = [UIScreen mainScreen].scale;
+CGSize targetSize = CGSizeMake(CGRectGetWidth(self.imageView.bounds) * scale,
+CGRectGetHeight(self.imageView.bounds) * scale);
+return targetSize;
+}
+

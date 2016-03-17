@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CGInstaPhoto;
 
 @interface CGPhotoCell : UICollectionViewCell
 
-- (void)configureCellWithImage:(UIImage *)image;
+@property (copy, nonatomic) NSString *representedAssetIdentifier;
+
+- (void)configureCellWithImage:(CGInstaPhoto *)photo;
 - (CGSize)targetSize;
+
 @end

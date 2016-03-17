@@ -12,12 +12,14 @@
 #import "CGStoryboardConstants.h"
 #import "CGAssetViewController.h"
 #import "CGCollectionViewFlowLayout.h"
+#import "CGPersistanceDataSource.h"
+#import "CGNetworkManager.h"
+#import "CGInstaPhoto.h"
 
 @interface CGViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (strong, nonatomic) PHFetchResult *assetsFetchResults;
-@property (strong, nonatomic) PHImageManager *imageManager;
+@property (strong, nonatomic) NSMutableArray *instaArray;
 
 @end
 
@@ -28,11 +30,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    PHFetchOptions *allPhotosOptions = [[PHFetchOptions alloc] init];
-    allPhotosOptions.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
-    self.assetsFetchResults = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
-    self.imageManager = [PHImageManager defaultManager];
+    [self downloadFromNetwork];
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+}
+
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
@@ -48,34 +53,15 @@
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.assetsFetchResults.count;
+    return self.instaArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    PHAsset *asset = self.assetsFetchResults[indexPath.item];
+    CGInstaPhoto *instaPhoto = self.instaArray[indexPath.item];
     CGPhotoCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
                                                                        forIndexPath:indexPath];
-    [self.imageManager requestImageForAsset:asset
-                                 targetSize:[cell targetSize]
-                                contentMode:PHImageContentModeAspectFill
-                                    options:nil
-                              resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                                  [cell configureCellWithImage:result];
-                              }];
+    [cell configureCellWithImage:instaPhoto];
     return cell;
-}
-
-- (NSArray *)assetsAtIndexPaths:(NSArray *)indexPaths {
-    if (indexPaths.count == 0) {
-        return nil;
-    }
-    NSMutableArray *assets = [NSMutableArray arrayWithCapacity:indexPaths.count];
-    for (NSIndexPath *indexPath in indexPaths) {
-        PHAsset *asset = self.assetsFetchResults[indexPath.item];
-        [assets addObject:asset];
-    }
-    
-    return assets;
 }
 
 #pragma mark - Navigation
@@ -84,8 +70,33 @@
     if ([segue.identifier isEqualToString:toPhotoPresentationVC]) {
         CGAssetViewController *assetViewController = segue.destinationViewController;
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
-        assetViewController.asset = self.assetsFetchResults[indexPath.item];
+        assetViewController.photo = self.instaArray[indexPath.item];
     }
+}
+
+- (void)downloadFromNetwork {
+    [CGNetworkManager downloadPhotosWithCompletionBlock:^(NSError *error, NSMutableArray *photos) {
+        if (error) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error!"
+                                                                           message:error.localizedDescription
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * _Nonnull action) {
+                                                               [alert dismissViewControllerAnimated:YES
+                                                                                         completion:nil];
+                                                           }];
+            [alert addAction:cancel];
+            [self presentViewController:alert animated:YES completion:nil];
+        } else {
+            if (!self.instaArray) {
+                self.instaArray = [NSMutableArray new];
+            }
+            [self.instaArray addObjectsFromArray:photos];
+            [self.collectionView reloadData];
+        }
+    }];
+    
 }
 
 @end

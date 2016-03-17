@@ -7,6 +7,8 @@
 //
 
 #import "CGAssetViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "CGInstaPhoto.h"
 
 @interface CGAssetViewController () <UIScrollViewDelegate>
 
@@ -20,29 +22,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[PHImageManager defaultManager]requestImageForAsset:self.asset
-                                              targetSize:[self targetSize]
-                                             contentMode:PHImageContentModeAspectFit
-                                                 options:nil
-                                           resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                                               if (result) {
-                                                   self.imageView.image = result;
-                                               }
-                                           }];
     self.scrollView.maximumZoomScale = 6.0;
     self.scrollView.delegate = self;
+    NSURL *url = [NSURL URLWithString:self.photo.largePhoto];
+    [self.imageView sd_setImageWithURL:url];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (CGSize)targetSize {
-    CGFloat scale = [UIScreen mainScreen].scale;
-    CGSize targetSize = CGSizeMake(CGRectGetWidth(self.imageView.bounds) * scale,
-                                   CGRectGetHeight(self.imageView.bounds) * scale);
-    return targetSize;
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
@@ -56,4 +44,5 @@
         self.imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
 }
+
 @end

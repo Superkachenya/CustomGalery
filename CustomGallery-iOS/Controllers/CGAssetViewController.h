@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <Photos/Photos.h>
+@class CGInstaPhoto;
 
 @interface CGAssetViewController : UIViewController
 
 @property (nonatomic, strong) PHAsset *asset;
+@property (nonatomic, strong) CGInstaPhoto *photo;
 
 @end
