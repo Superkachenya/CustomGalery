@@ -8,10 +8,6 @@
 
 #import "CGInstaPhoto.h"
 
-@interface CGInstaPhoto ()
-
-@end
-
 @implementation CGInstaPhoto
 
 - (void)parsePhoto:(NSDictionary *)photo {

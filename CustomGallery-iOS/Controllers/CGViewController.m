@@ -64,6 +64,12 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == self.instaArray.count - 1) {
+        [self downloadFromNetwork];
+    }
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -75,7 +81,7 @@
 }
 
 - (void)downloadFromNetwork {
-    [CGNetworkManager downloadPhotosWithCompletionBlock:^(NSError *error, NSMutableArray *photos) {
+    [[CGNetworkManager sharedManager] downloadPhotosWithCompletionBlock:^(NSError *error, NSMutableArray *photos) {
         if (error) {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error!"
                                                                            message:error.localizedDescription

@@ -182,8 +182,7 @@
 			children = (
 				8EE36DEE1C9319B500369F80 /* AppDelegate.h */,
 				8EE36DEF1C9319B500369F80 /* AppDelegate.m */,
-				8ED957411C9AA8B6000C0C15 /* CGNetworkManager.h */,
-				8ED957421C9AA8B6000C0C15 /* CGNetworkManager.m */,
+				8EF22FCC1C9BEE6500CCACA3 /* NetworkManager */,
 				8ED957401C9AA899000C0C15 /* Model */,
 				8E64DDB41C9866C300D384C8 /* Controller */,
 				8EE36DF41C9319B500369F80 /* Main.storyboard */,
@@ -211,6 +210,15 @@
 				8EE36E071C9319B500369F80 /* Info.plist */,
 			);
 			path = "CustomGallery-iOSTests";
+			sourceTree = "<group>";
+		};
+		8EF22FCC1C9BEE6500CCACA3 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				8ED957411C9AA8B6000C0C15 /* CGNetworkManager.h */,
+				8ED957421C9AA8B6000C0C15 /* CGNetworkManager.m */,
+			);
+			name = NetworkManager;
 			sourceTree = "<group>";
 		};
 		D506827C491EEDA670832C88 /* Frameworks */ = {
