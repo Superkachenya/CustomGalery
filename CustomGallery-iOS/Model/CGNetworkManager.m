@@ -29,8 +29,7 @@ NSString *const baseURL = @"https://api.instagram.com/v1/tags/nofilter/media/rec
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     __block NSDictionary *parameters = nil;
     [manager GET:baseURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *pagination = responseObject[@"pagination"];
-        NSString *string = pagination[@"next_max_tag_id"];
+        NSString *string = [responseObject valueForKeyPath:@"pagination.next_max_tag_id"];
         NSString *nextPageId = [string substringFromIndex:2];
         parameters = @{@"&max_tag_id=" : nextPageId};
         //NSLog(@"%@", pagination);
