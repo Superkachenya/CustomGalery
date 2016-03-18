@@ -53,14 +53,21 @@
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.instaArray.count;
+    return self.instaArray.count +1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGInstaPhoto *instaPhoto = self.instaArray[indexPath.item];
-    CGPhotoCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
-                                                                       forIndexPath:indexPath];
-    [cell configureCellWithImage:instaPhoto];
+    CGPhotoCell *cell = nil;
+    if (indexPath.row == self.instaArray.count) {
+        cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoLoadingIdentifier
+                                                              forIndexPath:indexPath];
+        [cell.activity startAnimating];
+    } else {
+        CGInstaPhoto *instaPhoto = self.instaArray[indexPath.item];
+        cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
+                                                              forIndexPath:indexPath];
+        [cell configureCellWithImage:instaPhoto];
+    }
     return cell;
 }
 

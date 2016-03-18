@@ -11,7 +11,7 @@
 
 @interface CGPhotoCell : UICollectionViewCell
 
-@property (copy, nonatomic) NSString *representedAssetIdentifier;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 
 - (void)configureCellWithImage:(CGInstaPhoto *)photo;
 - (CGSize)targetSize;

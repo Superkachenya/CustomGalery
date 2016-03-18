@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 extern NSString * const kPhotoCellIdentifier;
+extern NSString * const kPhotoLoadingIdentifier;
 
-extern NSString *const toPhotoPresentationVC;
+extern NSString * const toPhotoPresentationVC;

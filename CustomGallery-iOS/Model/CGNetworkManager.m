@@ -10,13 +10,8 @@
 #import <AFNetworking/AFNetworking.h>
 #import "CGInstaPhoto.h"
 
-NSString *const baseURL = @"https://api.instagram.com/v1/tags/nofilter/media/recent?access_token=1437246039.1677ed0.34e4c20d2961470a89784c8ac03d0ae4&next_max_tag_id=&max_tag_id=";
+NSString *const baseURL = @"https://api.instagram.com/v1/tags/nofilter/media/recent?access_token=1437246039.1677ed0.34e4c20d2961470a89784c8ac03d0ae4";
 
-@interface CGNetworkManager ()
-
-@property (strong, nonatomic) NSString *nextPageURL;
-
-@end
 @implementation CGNetworkManager
 
 + (instancetype)sharedManager {
@@ -32,10 +27,13 @@ NSString *const baseURL = @"https://api.instagram.com/v1/tags/nofilter/media/rec
 - (void)downloadPhotosWithCompletionBlock:(Completion)block; {
     Completion copyBlock = [block copy];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:baseURL parameters:self.nextPageURL progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    __block NSDictionary *parameters = nil;
+    [manager GET:baseURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *pagination = responseObject[@"pagination"];
-        self.nextPageURL = pagination[@"next_max_tag_id"];
-        NSLog(@"%@",self.nextPageURL);
+        NSString *string = pagination[@"next_max_tag_id"];
+        NSString *nextPageId = [string substringFromIndex:2];
+        parameters = @{@"&max_tag_id=" : nextPageId};
+        //NSLog(@"%@", pagination);
         NSArray *data = responseObject[@"data"];
         NSMutableArray *result = [NSMutableArray new];
         for (id post in data) {
