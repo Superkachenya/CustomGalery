@@ -14,6 +14,5 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 
 - (void)configureCellWithImage:(UIImage *)photo;
-- (CGSize)targetSize;
 
 @end

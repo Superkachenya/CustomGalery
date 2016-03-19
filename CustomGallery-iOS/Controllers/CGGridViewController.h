@@ -10,6 +10,5 @@
 
 @interface CGGridViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
-
 @end
 

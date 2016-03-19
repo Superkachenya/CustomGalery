@@ -7,7 +7,6 @@
 //
 
 #import "CGGridViewController.h"
-#import <Photos/Photos.h>
 #import "CGPhotoCell.h"
 #import "CGStoryboardConstants.h"
 #import "CGSingleImageViewController.h"
@@ -41,7 +40,6 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
     [self downloadFromNetwork];
     [self downloadFromGallery];
     self.manager = [SDWebImageManager sharedManager];
-    
 }
 
 - (void)viewWillLayoutSubviews {
@@ -62,7 +60,6 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
         return self.instaArray.count +1;
     } else {
         return self.galleryArray.count;
-
     }
 }
 
@@ -163,4 +160,5 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
             break;
     }
 }
+
 @end

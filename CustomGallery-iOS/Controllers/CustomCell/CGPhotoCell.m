@@ -28,11 +28,4 @@
     self.photoThumb.image = photo;
 }
 
-- (CGSize)targetSize {
-    CGFloat scale = [UIScreen mainScreen].scale;
-    CGSize targetSize = CGSizeMake(CGRectGetWidth(self.photoThumb.bounds) * scale,
-                                   CGRectGetHeight(self.photoThumb.bounds) * scale);
-    return targetSize;
-}
-
 @end
