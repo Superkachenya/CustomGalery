@@ -12,7 +12,7 @@
 
 @interface CGAssetViewController : UIViewController
 
-@property (nonatomic, strong) PHAsset *asset;
+@property (nonatomic, strong) UIImage *picture;
 @property (nonatomic, strong) CGInstaPhoto *photo;
 
 @end

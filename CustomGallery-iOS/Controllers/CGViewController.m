@@ -15,11 +15,20 @@
 #import "CGPersistanceDataSource.h"
 #import "CGNetworkManager.h"
 #import "CGInstaPhoto.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+
+NS_ENUM(NSInteger, CGSegmentedControlTypes) {
+    CGSegmentedControlTypeGallery,
+    CGSegmentedControlTypeInstagram
+};
 
 @interface CGViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSMutableArray *instaArray;
+@property (strong, nonatomic) NSMutableArray *galleryArray;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *CGSegmentedControl;
+@property (strong, nonatomic) SDWebImageManager *manager;
 
 @end
 
@@ -29,15 +38,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self downloadFromNetwork];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+    [self downloadFromGallery];
+    self.manager = [SDWebImageManager sharedManager];
     
 }
-
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
@@ -53,7 +58,11 @@
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.instaArray.count +1;
+    if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeGallery) {
+        return self.galleryArray.count;
+    } else {
+        return self.instaArray.count +1;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,17 +72,32 @@
                                                               forIndexPath:indexPath];
         [cell.activity startAnimating];
     } else {
-        CGInstaPhoto *instaPhoto = self.instaArray[indexPath.item];
-        cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
-                                                              forIndexPath:indexPath];
-        [cell configureCellWithImage:instaPhoto];
+        if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeInstagram) {
+            CGInstaPhoto *instaPhoto = self.instaArray[indexPath.item];
+            cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
+                                                                  forIndexPath:indexPath];
+            [self.manager downloadImageWithURL:instaPhoto.thumbnailURL
+                                       options:SDWebImageProgressiveDownload
+                                      progress:nil
+                                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                         [cell configureCellWithImage:image];
+                                     }];
+        } else if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeGallery) {
+            UIImage *image = self.galleryArray[indexPath.item];
+            cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
+                                                                  forIndexPath:indexPath];
+            [cell configureCellWithImage:image];
+        }
+        
     }
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == self.instaArray.count - 1) {
-        [self downloadFromNetwork];
+        if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeInstagram) {
+            [self downloadFromNetwork];
+        }
     }
 }
 
@@ -112,4 +136,28 @@
     
 }
 
+- (void)downloadFromGallery {
+    [[CGPersistanceDataSource sharedManager] getAllPhotosFromCameraWithCompletionBlock:^(NSMutableArray *photos) {
+        if (!self.galleryArray) {
+            self.galleryArray = [NSMutableArray new];
+        }
+        self.galleryArray = photos;
+        [self.collectionView reloadData];
+        NSLog(@"%lu", (unsigned long)self.galleryArray.count);
+    }];
+}
+
+- (IBAction)segmentedControlDidChangeIndex:(id)sender {
+    switch (self.CGSegmentedControl.selectedSegmentIndex) {
+        case CGSegmentedControlTypeGallery:
+            NSLog (@"GALLERY YO");
+            [self.collectionView reloadData];
+            break;
+            
+        case CGSegmentedControlTypeInstagram:
+            NSLog(@"INSTA YO");
+            [self.collectionView reloadData];
+            break;
+    }
+}
 @end

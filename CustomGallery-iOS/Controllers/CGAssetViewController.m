@@ -24,8 +24,7 @@
     
     self.scrollView.maximumZoomScale = 6.0;
     self.scrollView.delegate = self;
-    NSURL *url = [NSURL URLWithString:self.photo.largePhoto];
-    [self.imageView sd_setImageWithURL:url];
+    [self.imageView sd_setImageWithURL:self.photo.largePhotoURL];
 }
 
 - (void)didReceiveMemoryWarning {

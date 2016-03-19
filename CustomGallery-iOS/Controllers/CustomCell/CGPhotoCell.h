@@ -13,7 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 
-- (void)configureCellWithImage:(CGInstaPhoto *)photo;
+- (void)configureCellWithImage:(UIImage *)photo;
 - (CGSize)targetSize;
 
 @end

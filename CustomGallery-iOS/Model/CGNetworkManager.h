@@ -13,6 +13,6 @@ typedef void(^Completion)(NSError *error, NSMutableArray *photos);
 @interface CGNetworkManager : NSObject
 
 + (instancetype)sharedManager;
-- (void)downloadPhotosWithCompletionBlock:(Completion)block;;
+- (void)downloadPhotosWithCompletionBlock:(Completion)block;
 
 @end

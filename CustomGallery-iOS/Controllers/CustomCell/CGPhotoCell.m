@@ -24,9 +24,8 @@
     self.photoThumb.image = nil;
 }
 
-- (void)configureCellWithImage:(CGInstaPhoto *)photo {
-    NSURL *url = [NSURL URLWithString:photo.thumbnailPhoto];
-    [self.photoThumb sd_setImageWithURL:url];
+- (void)configureCellWithImage:(UIImage *)photo {
+    self.photoThumb.image = photo;
 }
 
 - (CGSize)targetSize {

@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+@import UIKit;
 
 @interface CGInstaPhoto : NSObject
 
-@property (strong, nonatomic) NSString *largePhoto;
-@property (strong, nonatomic) NSString *thumbnailPhoto;
+@property (strong, nonatomic) NSURL *largePhotoURL;
+@property (strong, nonatomic) NSURL *thumbnailURL;
 
 - (void)parsePhoto:(NSDictionary *)photo;
 

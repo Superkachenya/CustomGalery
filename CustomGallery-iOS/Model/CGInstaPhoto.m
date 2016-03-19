@@ -7,12 +7,13 @@
 //
 
 #import "CGInstaPhoto.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation CGInstaPhoto
 
 - (void)parsePhoto:(NSDictionary *)photo {
-    self.largePhoto = [photo valueForKeyPath:@"standard_resolution.url"];
-    self.thumbnailPhoto = [photo valueForKeyPath:@"standard_resolution.url"];
+    self.largePhotoURL = [NSURL URLWithString:[photo valueForKeyPath:@"standard_resolution.url"]];
+    self.thumbnailURL = [NSURL URLWithString:[photo valueForKeyPath:@"thumbnail.url"]];
 }
 
 @end

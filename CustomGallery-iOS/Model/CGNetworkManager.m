@@ -23,7 +23,6 @@ NSString *const baseURL = @"https://api.instagram.com/v1/tags/nofilter/media/rec
     return sharedMyManager;
 }
 
-
 - (void)downloadPhotosWithCompletionBlock:(Completion)block; {
     Completion copyBlock = [block copy];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -32,8 +31,8 @@ NSString *const baseURL = @"https://api.instagram.com/v1/tags/nofilter/media/rec
         NSString *string = [responseObject valueForKeyPath:@"pagination.next_max_tag_id"];
         NSString *nextPageId = [string substringFromIndex:2];
         parameters = @{@"&max_tag_id=" : nextPageId};
-        //NSLog(@"%@", pagination);
         NSArray *data = responseObject[@"data"];
+        //NSLog(@"%@", data);
         NSMutableArray *result = [NSMutableArray new];
         for (id post in data) {
             NSDictionary *image = (NSDictionary *)post[@"images"];
@@ -48,4 +47,5 @@ NSString *const baseURL = @"https://api.instagram.com/v1/tags/nofilter/media/rec
         copyBlock(error, nil);
     }];
 }
+
 @end

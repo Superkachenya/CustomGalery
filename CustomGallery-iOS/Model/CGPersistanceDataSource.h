@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+typedef void(^CompletionGallery)(NSMutableArray *photos);
 @interface CGPersistanceDataSource : NSObject
 
-+ (PHFetchResult *)galleryPhotoFetchResult;
++ (instancetype)sharedManager;
+- (void)getAllPhotosFromCameraWithCompletionBlock:(CompletionGallery)block;
 
 @end

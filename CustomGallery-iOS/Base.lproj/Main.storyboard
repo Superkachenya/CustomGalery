@@ -25,6 +25,9 @@
                                     <segment title="Gallery"/>
                                     <segment title="Instagram"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentedControlDidChangeIndex:" destination="BYZ-38-t0r" eventType="valueChanged" id="nWG-bc-ayY"/>
+                                </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vue-lf-DPd">
                                 <rect key="frame" x="0.0" y="92" width="320" height="476"/>
@@ -100,6 +103,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="My Photos" id="80M-n0-suE"/>
                     <connections>
+                        <outlet property="CGSegmentedControl" destination="K6c-5w-xJ4" id="2kz-7g-deJ"/>
                         <outlet property="collectionView" destination="Vue-lf-DPd" id="ODq-uC-MiC"/>
                     </connections>
                 </viewController>
