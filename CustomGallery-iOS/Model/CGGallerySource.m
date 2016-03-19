@@ -6,20 +6,20 @@
 //  Copyright © 2016 Cleveroad. All rights reserved.
 //
 
-#import <Photos/Photos.h>
-#import "CGPersistanceDataSource.h"
+@import Photos;
+#import "CGGallerySource.h"
 
-@implementation CGPersistanceDataSource
+@implementation CGGallerySource
 
 + (instancetype)sharedManager {
-    static CGPersistanceDataSource *sharedMyManager = nil;
+    static CGGallerySource *sharedMyManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedMyManager = [self new];
     });
     return sharedMyManager;
 }
-- (void)getAllPhotosFromCameraWithCompletionBlock:(CompletionGallery)block {
+- (void)getAllPhotosFromGalleryWithCompletionBlock:(CompletionGallery)block {
     CompletionGallery copyBlock = [block copy];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         PHImageRequestOptions *requestOptions = [PHImageRequestOptions new];

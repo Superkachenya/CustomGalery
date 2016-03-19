@@ -6,13 +6,13 @@
 //  Copyright © 2016 Cleveroad. All rights reserved.
 //
 
-#import "CGViewController.h"
+#import "CGGridViewController.h"
 #import <Photos/Photos.h>
 #import "CGPhotoCell.h"
 #import "CGStoryboardConstants.h"
-#import "CGAssetViewController.h"
+#import "CGSingleImageViewController.h"
 #import "CGCollectionViewFlowLayout.h"
-#import "CGPersistanceDataSource.h"
+#import "CGGallerySource.h"
 #import "CGNetworkManager.h"
 #import "CGInstaPhoto.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -22,7 +22,7 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
     CGSegmentedControlTypeInstagram
 };
 
-@interface CGViewController ()
+@interface CGGridViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSMutableArray *instaArray;
@@ -32,7 +32,7 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
 
 @end
 
-@implementation CGViewController
+@implementation CGGridViewController
 
 #pragma mark - View lifeCycle
 
@@ -58,21 +58,22 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeGallery) {
-        return self.galleryArray.count;
-    } else {
+    if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeInstagram) {
         return self.instaArray.count +1;
+    } else {
+        return self.galleryArray.count;
+
     }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGPhotoCell *cell = nil;
-    if (indexPath.row == self.instaArray.count) {
-        cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoLoadingIdentifier
-                                                              forIndexPath:indexPath];
-        [cell.activity startAnimating];
-    } else {
         if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeInstagram) {
+            if (indexPath.row == self.instaArray.count) {
+                cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoLoadingIdentifier
+                                                                      forIndexPath:indexPath];
+                [cell.activity startAnimating];
+            } else {
             CGInstaPhoto *instaPhoto = self.instaArray[indexPath.item];
             cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
                                                                   forIndexPath:indexPath];
@@ -82,14 +83,13 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
                                      completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
                                          [cell configureCellWithImage:image];
                                      }];
+            }
         } else if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeGallery) {
             UIImage *image = self.galleryArray[indexPath.item];
             cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
                                                                   forIndexPath:indexPath];
             [cell configureCellWithImage:image];
         }
-        
-    }
     return cell;
 }
 
@@ -105,7 +105,7 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:toPhotoPresentationVC]) {
-        CGAssetViewController *assetViewController = segue.destinationViewController;
+        CGSingleImageViewController *assetViewController = segue.destinationViewController;
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
         if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeInstagram) {
             assetViewController.photo = self.instaArray[indexPath.item];
@@ -141,7 +141,7 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
 }
 
 - (void)downloadFromGallery {
-    [[CGPersistanceDataSource sharedManager] getAllPhotosFromCameraWithCompletionBlock:^(NSMutableArray *photos) {
+    [[CGGallerySource sharedManager] getAllPhotosFromGalleryWithCompletionBlock:^(NSMutableArray *photos) {
         if (!self.galleryArray) {
             self.galleryArray = [NSMutableArray new];
         }

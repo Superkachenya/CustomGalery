@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		8E64DDB71C98672600D384C8 /* CGPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E64DDB61C98672600D384C8 /* CGPhotoCell.m */; };
-		8E64DDBA1C98674600D384C8 /* CGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E64DDB91C98674600D384C8 /* CGViewController.m */; };
+		8E64DDBA1C98674600D384C8 /* CGGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E64DDB91C98674600D384C8 /* CGGridViewController.m */; };
 		8E64DDBE1C986A4200D384C8 /* CGStoryboardConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E64DDBD1C986A4200D384C8 /* CGStoryboardConstants.m */; };
-		8EB36D3A1C998A3C001D2C78 /* CGAssetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB36D391C998A3C001D2C78 /* CGAssetViewController.m */; };
+		8EB36D3A1C998A3C001D2C78 /* CGSingleImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB36D391C998A3C001D2C78 /* CGSingleImageViewController.m */; };
 		8EB36D3E1C99A436001D2C78 /* CGCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EB36D3D1C99A436001D2C78 /* CGCollectionViewFlowLayout.m */; };
-		8ED9573F1C9AA893000C0C15 /* CGPersistanceDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9573E1C9AA893000C0C15 /* CGPersistanceDataSource.m */; };
+		8ED9573F1C9AA893000C0C15 /* CGGallerySource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9573E1C9AA893000C0C15 /* CGGallerySource.m */; };
 		8ED957431C9AA8B6000C0C15 /* CGNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED957421C9AA8B6000C0C15 /* CGNetworkManager.m */; };
 		8ED957461C9AEB00000C0C15 /* CGInstaPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED957451C9AEB00000C0C15 /* CGInstaPhoto.m */; };
 		8ED957491C9B04B8000C0C15 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 8ED957481C9B04B8000C0C15 /* File */; };
@@ -40,16 +40,16 @@
 		598632B9028298634F89E1BA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8E64DDB51C98672600D384C8 /* CGPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGPhotoCell.h; path = Controllers/CustomCell/CGPhotoCell.h; sourceTree = "<group>"; };
 		8E64DDB61C98672600D384C8 /* CGPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGPhotoCell.m; path = Controllers/CustomCell/CGPhotoCell.m; sourceTree = "<group>"; };
-		8E64DDB81C98674600D384C8 /* CGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGViewController.h; path = Controllers/CGViewController.h; sourceTree = "<group>"; };
-		8E64DDB91C98674600D384C8 /* CGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGViewController.m; path = Controllers/CGViewController.m; sourceTree = "<group>"; };
+		8E64DDB81C98674600D384C8 /* CGGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGGridViewController.h; path = Controllers/CGGridViewController.h; sourceTree = "<group>"; };
+		8E64DDB91C98674600D384C8 /* CGGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGGridViewController.m; path = Controllers/CGGridViewController.m; sourceTree = "<group>"; };
 		8E64DDBC1C986A4200D384C8 /* CGStoryboardConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGStoryboardConstants.h; path = Controllers/StoryboardConstants/CGStoryboardConstants.h; sourceTree = "<group>"; };
 		8E64DDBD1C986A4200D384C8 /* CGStoryboardConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGStoryboardConstants.m; path = Controllers/StoryboardConstants/CGStoryboardConstants.m; sourceTree = "<group>"; };
-		8EB36D381C998A3C001D2C78 /* CGAssetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGAssetViewController.h; path = Controllers/CGAssetViewController.h; sourceTree = "<group>"; };
-		8EB36D391C998A3C001D2C78 /* CGAssetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGAssetViewController.m; path = Controllers/CGAssetViewController.m; sourceTree = "<group>"; };
+		8EB36D381C998A3C001D2C78 /* CGSingleImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGSingleImageViewController.h; path = Controllers/CGSingleImageViewController.h; sourceTree = "<group>"; };
+		8EB36D391C998A3C001D2C78 /* CGSingleImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGSingleImageViewController.m; path = Controllers/CGSingleImageViewController.m; sourceTree = "<group>"; };
 		8EB36D3C1C99A436001D2C78 /* CGCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGCollectionViewFlowLayout.h; path = Controllers/CGCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		8EB36D3D1C99A436001D2C78 /* CGCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGCollectionViewFlowLayout.m; path = Controllers/CGCollectionViewFlowLayout.m; sourceTree = "<group>"; };
-		8ED9573D1C9AA893000C0C15 /* CGPersistanceDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGPersistanceDataSource.h; path = Model/CGPersistanceDataSource.h; sourceTree = "<group>"; };
-		8ED9573E1C9AA893000C0C15 /* CGPersistanceDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGPersistanceDataSource.m; path = Model/CGPersistanceDataSource.m; sourceTree = "<group>"; };
+		8ED9573D1C9AA893000C0C15 /* CGGallerySource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGGallerySource.h; path = Model/CGGallerySource.h; sourceTree = "<group>"; };
+		8ED9573E1C9AA893000C0C15 /* CGGallerySource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGGallerySource.m; path = Model/CGGallerySource.m; sourceTree = "<group>"; };
 		8ED957411C9AA8B6000C0C15 /* CGNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGNetworkManager.h; path = Model/CGNetworkManager.h; sourceTree = "<group>"; };
 		8ED957421C9AA8B6000C0C15 /* CGNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGNetworkManager.m; path = Model/CGNetworkManager.m; sourceTree = "<group>"; };
 		8ED957441C9AEB00000C0C15 /* CGInstaPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGInstaPhoto.h; path = Model/CGInstaPhoto.h; sourceTree = "<group>"; };
@@ -102,8 +102,8 @@
 			children = (
 				8E64DDBF1C986A4B00D384C8 /* StoryboardConstants */,
 				8EB36D3B1C99A3EF001D2C78 /* GridView */,
-				8EB36D381C998A3C001D2C78 /* CGAssetViewController.h */,
-				8EB36D391C998A3C001D2C78 /* CGAssetViewController.m */,
+				8EB36D381C998A3C001D2C78 /* CGSingleImageViewController.h */,
+				8EB36D391C998A3C001D2C78 /* CGSingleImageViewController.m */,
 				8E64DDBB1C98675300D384C8 /* CustomCell */,
 			);
 			name = Controller;
@@ -132,8 +132,8 @@
 			children = (
 				8EB36D3C1C99A436001D2C78 /* CGCollectionViewFlowLayout.h */,
 				8EB36D3D1C99A436001D2C78 /* CGCollectionViewFlowLayout.m */,
-				8E64DDB81C98674600D384C8 /* CGViewController.h */,
-				8E64DDB91C98674600D384C8 /* CGViewController.m */,
+				8E64DDB81C98674600D384C8 /* CGGridViewController.h */,
+				8E64DDB91C98674600D384C8 /* CGGridViewController.m */,
 			);
 			name = GridView;
 			sourceTree = "<group>";
@@ -141,8 +141,8 @@
 		8ED957401C9AA899000C0C15 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8ED9573D1C9AA893000C0C15 /* CGPersistanceDataSource.h */,
-				8ED9573E1C9AA893000C0C15 /* CGPersistanceDataSource.m */,
+				8ED9573D1C9AA893000C0C15 /* CGGallerySource.h */,
+				8ED9573E1C9AA893000C0C15 /* CGGallerySource.m */,
 				8ED957471C9B0009000C0C15 /* InstaPhoto */,
 			);
 			name = Model;
@@ -385,12 +385,12 @@
 				8E64DDBE1C986A4200D384C8 /* CGStoryboardConstants.m in Sources */,
 				8ED957431C9AA8B6000C0C15 /* CGNetworkManager.m in Sources */,
 				8ED957461C9AEB00000C0C15 /* CGInstaPhoto.m in Sources */,
-				8E64DDBA1C98674600D384C8 /* CGViewController.m in Sources */,
-				8ED9573F1C9AA893000C0C15 /* CGPersistanceDataSource.m in Sources */,
+				8E64DDBA1C98674600D384C8 /* CGGridViewController.m in Sources */,
+				8ED9573F1C9AA893000C0C15 /* CGGallerySource.m in Sources */,
 				8E64DDB71C98672600D384C8 /* CGPhotoCell.m in Sources */,
 				8EE36DF01C9319B500369F80 /* AppDelegate.m in Sources */,
 				8EE36DED1C9319B500369F80 /* main.m in Sources */,
-				8EB36D3A1C998A3C001D2C78 /* CGAssetViewController.m in Sources */,
+				8EB36D3A1C998A3C001D2C78 /* CGSingleImageViewController.m in Sources */,
 				8EB36D3E1C99A436001D2C78 /* CGCollectionViewFlowLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

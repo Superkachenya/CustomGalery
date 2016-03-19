@@ -6,9 +6,9 @@
 //  Copyright © 2016 Cleveroad. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
-@interface CGViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CGGridViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 
 @end

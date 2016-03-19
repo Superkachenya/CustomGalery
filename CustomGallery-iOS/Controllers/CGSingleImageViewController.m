@@ -6,18 +6,18 @@
 //  Copyright © 2016 Cleveroad. All rights reserved.
 //
 
-#import "CGAssetViewController.h"
+#import "CGSingleImageViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "CGInstaPhoto.h"
 
-@interface CGAssetViewController () <UIScrollViewDelegate>
+@interface CGSingleImageViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
-@implementation CGAssetViewController
+@implementation CGSingleImageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

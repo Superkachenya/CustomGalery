@@ -6,11 +6,10 @@
 //  Copyright © 2016 Cleveroad. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <Photos/Photos.h>
+@import UIKit;
 @class CGInstaPhoto;
 
-@interface CGAssetViewController : UIViewController
+@interface CGSingleImageViewController : UIViewController
 
 @property (nonatomic, strong) UIImage *picture;
 @property (nonatomic, strong) CGInstaPhoto *photo;
