@@ -24,7 +24,11 @@
     
     self.scrollView.maximumZoomScale = 6.0;
     self.scrollView.delegate = self;
-    [self.imageView sd_setImageWithURL:self.photo.largePhotoURL];
+    if (self.photo) {
+        [self.imageView sd_setImageWithURL:self.photo.largePhotoURL];
+    } else if (self.picture) {
+        self.imageView.image = self.picture;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -107,7 +107,11 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
     if ([segue.identifier isEqualToString:toPhotoPresentationVC]) {
         CGAssetViewController *assetViewController = segue.destinationViewController;
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
-        assetViewController.photo = self.instaArray[indexPath.item];
+        if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeInstagram) {
+            assetViewController.photo = self.instaArray[indexPath.item];
+        } else if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeGallery) {
+            assetViewController.picture = self.galleryArray[indexPath.item];
+        }
     }
 }
 
@@ -143,7 +147,6 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
         }
         self.galleryArray = photos;
         [self.collectionView reloadData];
-        NSLog(@"%lu", (unsigned long)self.galleryArray.count);
     }];
 }
 
