@@ -118,17 +118,7 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
 - (void)downloadFromNetwork {
     [[CGNetworkManager sharedManager] downloadPhotosWithCompletionBlock:^(NSError *error, NSMutableArray *photos) {
         if (error) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error!"
-                                                                           message:error.localizedDescription
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel"
-                                                             style:UIAlertActionStyleDefault
-                                                           handler:^(UIAlertAction * _Nonnull action) {
-                                                               [alert dismissViewControllerAnimated:YES
-                                                                                         completion:nil];
-                                                           }];
-            [alert addAction:cancel];
-            [self presentViewController:alert animated:YES completion:nil];
+            [self initiateAlertWithError:error];
         } else {
             if (!self.instaArray) {
                 self.instaArray = [NSMutableArray new];
@@ -152,6 +142,20 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
 
 - (IBAction)segmentedControlDidChangeIndex:(id)sender {
     [self.collectionView reloadData];
+}
+
+- (void)initiateAlertWithError:(NSError *)error {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error!"
+                                                                   message:error.localizedDescription
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * _Nonnull action) {
+                                                       [alert dismissViewControllerAnimated:YES
+                                                                                 completion:nil];
+                                                   }];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
     
 }
 
