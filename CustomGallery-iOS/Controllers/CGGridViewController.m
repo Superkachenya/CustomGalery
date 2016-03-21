@@ -65,28 +65,31 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGPhotoCell *cell = nil;
-        if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeInstagram) {
+    UIImage *image = nil;
+    switch (self.CGSegmentedControl.selectedSegmentIndex) {
+        case CGSegmentedControlTypeGallery:
+            image = self.galleryArray[indexPath.item];
+            cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
+                                                                  forIndexPath:indexPath];
+            [cell configureCellWithImage:image];
+            break;
+        case CGSegmentedControlTypeInstagram :
             if (indexPath.row == self.instaArray.count) {
                 cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoLoadingIdentifier
                                                                       forIndexPath:indexPath];
                 [cell.activity startAnimating];
             } else {
-            CGInstaPhoto *instaPhoto = self.instaArray[indexPath.item];
-            cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
-                                                                  forIndexPath:indexPath];
-            [self.manager downloadImageWithURL:instaPhoto.thumbnailURL
-                                       options:SDWebImageProgressiveDownload
-                                      progress:nil
-                                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                         [cell configureCellWithImage:image];
-                                     }];
+                CGInstaPhoto *instaPhoto = self.instaArray[indexPath.item];
+                cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
+                                                                      forIndexPath:indexPath];
+                [self.manager downloadImageWithURL:instaPhoto.thumbnailURL
+                                           options:SDWebImageProgressiveDownload
+                                          progress:nil
+                                         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                             [cell configureCellWithImage:image];
+                                         }];
             }
-        } else if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeGallery) {
-            UIImage *image = self.galleryArray[indexPath.item];
-            cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
-                                                                  forIndexPath:indexPath];
-            [cell configureCellWithImage:image];
-        }
+    }
     return cell;
 }
 
@@ -148,17 +151,8 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
 }
 
 - (IBAction)segmentedControlDidChangeIndex:(id)sender {
-    switch (self.CGSegmentedControl.selectedSegmentIndex) {
-        case CGSegmentedControlTypeGallery:
-            NSLog (@"GALLERY YO");
-            [self.collectionView reloadData];
-            break;
-            
-        case CGSegmentedControlTypeInstagram:
-            NSLog(@"INSTA YO");
-            [self.collectionView reloadData];
-            break;
-    }
+    [self.collectionView reloadData];
+    
 }
 
 @end

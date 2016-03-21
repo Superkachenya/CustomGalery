@@ -23,7 +23,7 @@
     [super viewDidLoad];
     
     self.scrollView.maximumZoomScale = 6.0;
-    self.scrollView.delegate = self;
+    self.scrollView.contentSize = self.imageView.image.size;
     if (self.photo) {
         [self.imageView sd_setImageWithURL:self.photo.largePhotoURL];
     } else if (self.picture) {
@@ -41,6 +41,7 @@
 }
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
+
     if (scale == scrollView.minimumZoomScale) {
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     } else {

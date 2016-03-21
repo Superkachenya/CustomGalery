@@ -11,6 +11,11 @@
 #import "CGInstaPhoto.h"
 
 NSString *const baseURL = @"https://api.instagram.com/v1/tags/nofilter/media/recent?access_token=1437246039.1677ed0.34e4c20d2961470a89784c8ac03d0ae4";
+@interface CGNetworkManager ()
+
+@property (strong, nonatomic)__block NSString *stringURL;
+
+@end
 
 @implementation CGNetworkManager
 
@@ -26,13 +31,12 @@ NSString *const baseURL = @"https://api.instagram.com/v1/tags/nofilter/media/rec
 - (void)downloadPhotosWithCompletionBlock:(Completion)block; {
     Completion copyBlock = [block copy];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    __block NSDictionary *parameters = nil;
-    [manager GET:baseURL parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSString *string = [responseObject valueForKeyPath:@"pagination.next_max_tag_id"];
-        NSString *nextPageId = [string substringFromIndex:2];
-        parameters = @{@"&max_tag_id=" : nextPageId};
+    if (!self.stringURL) {
+        self.stringURL = baseURL;
+    }
+    [manager GET:self.stringURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        self.stringURL = [responseObject valueForKeyPath:@"pagination.next_url"];
         NSArray *data = responseObject[@"data"];
-        //NSLog(@"%@", data);
         NSMutableArray *result = [NSMutableArray new];
         for (id post in data) {
             NSDictionary *image = (NSDictionary *)post[@"images"];

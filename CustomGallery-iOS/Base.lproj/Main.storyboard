@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KHE-4t-PNf">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -138,6 +139,9 @@
                                     <constraint firstItem="kfx-Es-3D9" firstAttribute="centerY" secondItem="1mL-wu-lxK" secondAttribute="centerY" id="weV-Sz-ZwS"/>
                                     <constraint firstItem="kfx-Es-3D9" firstAttribute="top" secondItem="1mL-wu-lxK" secondAttribute="top" id="x0z-IY-ROF"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="YOf-Si-Ox4" id="0gJ-at-BqI"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
