@@ -6,7 +6,6 @@
 //  Copyright © 2016 Cleveroad. All rights reserved.
 //
 
-@import Photos;
 #import "CGGridViewController.h"
 #import "CGPhotoCell.h"
 #import "CGStoryboardConstants.h"
@@ -15,7 +14,6 @@
 #import "CGGallerySource.h"
 #import "CGNetworkManager.h"
 #import "CGInstaPhoto.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 
 NS_ENUM(NSInteger, CGSegmentedControlTypes) {
     CGSegmentedControlTypeGallery,
@@ -28,7 +26,6 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
 @property (strong, nonatomic) NSMutableArray *instaArray;
 @property (strong, nonatomic) NSMutableArray *galleryArray;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *CGSegmentedControl;
-@property (strong, nonatomic) SDWebImageManager *instaManager;
 @property (assign, nonatomic) NSUInteger offset;
 
 @end
@@ -42,7 +39,6 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
     self.offset = 21;
     [self downloadFromNetwork];
     [self downloadFromGallery];
-    self.instaManager = [SDWebImageManager sharedManager];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -85,12 +81,7 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
                 CGInstaPhoto *instaPhoto = self.instaArray[indexPath.item];
                 cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
                                                                       forIndexPath:indexPath];
-                [self.instaManager downloadImageWithURL:instaPhoto.thumbnailURL
-                                           options:SDWebImageProgressiveDownload
-                                          progress:nil
-                                         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-                                             [cell configureCellWithImage:image];
-                                         }];
+                [cell configureCellWithPhoto:instaPhoto];
             }
     }
     return cell;
@@ -112,7 +103,8 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
         CGSingleImageViewController *assetViewController = segue.destinationViewController;
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
         if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeInstagram) {
-            assetViewController.photo = self.instaArray[indexPath.item];
+            CGInstaPhoto *instaPhoto = self.instaArray[indexPath.item];
+            assetViewController.picture = [UIImage imageWithData:[NSData dataWithContentsOfURL:instaPhoto.largePhotoURL]];
         } else if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeGallery) {
             assetViewController.picture = self.galleryArray[indexPath.item];
         }

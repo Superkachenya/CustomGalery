@@ -7,11 +7,9 @@
 //
 
 @import UIKit;
-@class CGInstaPhoto;
 
 @interface CGSingleImageViewController : UIViewController
 
 @property (nonatomic, strong) UIImage *picture;
-@property (nonatomic, strong) CGInstaPhoto *photo;
 
 @end
