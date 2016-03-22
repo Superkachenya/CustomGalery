@@ -10,7 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "CGInstaPhoto.h"
 
-NSString *const baseURL = @"https://api.instagram.com/v1/tags/nofilter/media/recent?access_token=1437246039.1677ed0.34e4c20d2961470a89784c8ac03d0ae4";
+NSString *const baseURL = @"https://api.instagram.com/v1/tags/nofilter/media/recent?access_token=1437246039.1677ed0.34e4c20d2961470a89784c8ac03d0ae4&count=21";
 @interface CGNetworkManager ()
 
 @property (strong, nonatomic)__block NSString *stringURL;

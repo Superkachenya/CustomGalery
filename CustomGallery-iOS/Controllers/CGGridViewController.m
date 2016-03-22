@@ -6,6 +6,7 @@
 //  Copyright © 2016 Cleveroad. All rights reserved.
 //
 
+@import Photos;
 #import "CGGridViewController.h"
 #import "CGPhotoCell.h"
 #import "CGStoryboardConstants.h"
@@ -27,7 +28,8 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
 @property (strong, nonatomic) NSMutableArray *instaArray;
 @property (strong, nonatomic) NSMutableArray *galleryArray;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *CGSegmentedControl;
-@property (strong, nonatomic) SDWebImageManager *manager;
+@property (strong, nonatomic) SDWebImageManager *instaManager;
+@property (assign, nonatomic) NSUInteger offset;
 
 @end
 
@@ -37,9 +39,10 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.offset = 21;
     [self downloadFromNetwork];
     [self downloadFromGallery];
-    self.manager = [SDWebImageManager sharedManager];
+    self.instaManager = [SDWebImageManager sharedManager];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -57,7 +60,7 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeInstagram) {
-        return self.instaArray.count +1;
+        return self.offset;
     } else {
         return self.galleryArray.count;
     }
@@ -74,7 +77,7 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
             [cell configureCellWithImage:image];
             break;
         case CGSegmentedControlTypeInstagram :
-            if (indexPath.row == self.instaArray.count) {
+            if (indexPath.row >= self.instaArray.count) {
                 cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoLoadingIdentifier
                                                                       forIndexPath:indexPath];
                 [cell.activity startAnimating];
@@ -82,7 +85,7 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
                 CGInstaPhoto *instaPhoto = self.instaArray[indexPath.item];
                 cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
                                                                       forIndexPath:indexPath];
-                [self.manager downloadImageWithURL:instaPhoto.thumbnailURL
+                [self.instaManager downloadImageWithURL:instaPhoto.thumbnailURL
                                            options:SDWebImageProgressiveDownload
                                           progress:nil
                                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
@@ -96,6 +99,7 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == self.instaArray.count - 1) {
         if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeInstagram) {
+            self.offset += self.offset;
             [self downloadFromNetwork];
         }
     }
