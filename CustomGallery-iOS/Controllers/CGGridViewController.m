@@ -25,10 +25,11 @@ NSUInteger const kLoadedphotos = 21;
 @interface CGGridViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *CGSegmentedControl;
+
+@property (assign, nonatomic) NSUInteger offset;
 @property (strong, nonatomic) NSMutableArray *instaArray;
 @property (strong, nonatomic) NSMutableArray *galleryArray;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *CGSegmentedControl;
-@property (assign, nonatomic) NSUInteger offset;
 
 @end
 
@@ -48,11 +49,6 @@ NSUInteger const kLoadedphotos = 21;
     [super viewWillLayoutSubviews];
     
     self.collectionView.collectionViewLayout = [CGCollectionViewFlowLayout new];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UICollectionViewDataSource

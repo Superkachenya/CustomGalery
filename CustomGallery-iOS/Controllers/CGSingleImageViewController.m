@@ -10,8 +10,9 @@
 
 @interface CGSingleImageViewController () <UIScrollViewDelegate>
 
-@property (strong, nonatomic) UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (strong, nonatomic) UIImageView *imageView;
 
 @end
 
