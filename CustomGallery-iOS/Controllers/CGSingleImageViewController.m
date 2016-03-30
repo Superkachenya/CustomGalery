@@ -23,10 +23,10 @@
     if (self.picture) {
         self.imageView = [[UIImageView alloc] initWithImage:self.picture];
     }
-    self.imageView.frame = (CGRect){.origin=CGPointMake(0.0f, 0.0f), .size = self.imageView.image.size};
+    self.imageView.frame = (CGRect){.origin = CGPointMake(0.0f, 0.0f), .size = self.imageView.image.size};
     [self.scrollView addSubview:self.imageView];
     self.scrollView.contentSize = self.imageView.image.size;
-
+    
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                           action:@selector(scrollViewDoubleTapped:)];
     doubleTapRecognizer.numberOfTapsRequired = 2;
@@ -38,31 +38,38 @@
     twoFingerTapRecognizer.numberOfTapsRequired = 1;
     twoFingerTapRecognizer.numberOfTouchesRequired = 2;
     [self.scrollView addGestureRecognizer:twoFingerTapRecognizer];
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    CGRect scrollViewFrame = self.scrollView.frame;
-    CGFloat scaleWidth = scrollViewFrame.size.width / self.scrollView.contentSize.width;
-    CGFloat scaleHeight = scrollViewFrame.size.height / self.scrollView.contentSize.height;
-    CGFloat minScale = MIN(scaleWidth, scaleHeight);
-    
-    self.scrollView.minimumZoomScale = minScale;
-    self.scrollView.maximumZoomScale = 1.0f;
-    self.scrollView.zoomScale = minScale;
-    
-    [self centerScrollViewContents];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self updateScrollView];
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
+    
+    [self centerScrollViewContents];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    CGFloat scaleWidth;
+    CGFloat scaleHeight;
+    CGFloat minScale;
+    CGSize imageSize = self.imageView.image.size;
+    if (size.height > size.width) {
+         scaleWidth = size.width / imageSize.width;
+         scaleHeight = size.height / imageSize.height;
+         minScale = MIN(scaleWidth, scaleHeight);
+    } else {
+        scaleWidth = size.height / imageSize.height;
+        scaleHeight = size.width    / imageSize.width;
+        minScale = MIN(scaleWidth, scaleHeight);
+    }
+    self.scrollView.minimumZoomScale = minScale;
+    self.scrollView.maximumZoomScale = 1.0f;
+    self.scrollView.zoomScale = minScale;
     
     [self centerScrollViewContents];
 }
@@ -110,4 +117,17 @@
     [self.scrollView setZoomScale:newZoomScale animated:YES];
 }
 
- @end
+- (void)updateScrollView {
+    CGRect scrollViewFrame = self.view.frame;
+    CGFloat scaleWidth = scrollViewFrame.size.width / self.scrollView.contentSize.width;
+    CGFloat scaleHeight = scrollViewFrame.size.height / self.scrollView.contentSize.height;
+    CGFloat minScale = MIN(scaleWidth, scaleHeight);
+    
+    self.scrollView.minimumZoomScale = minScale;
+    self.scrollView.maximumZoomScale = 1.0f;
+    self.scrollView.zoomScale = minScale;
+    
+    [self centerScrollViewContents];
+}
+
+@end
