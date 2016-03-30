@@ -74,16 +74,17 @@ NSUInteger const kLoadedphotos = 21;
             cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
                                                                   forIndexPath:indexPath];
             [cell configureCellWithImage:image];
-        }
             break;
+        }
+            
         case CGSegmentedControlTypeInstagram : {
             CGInstaPhoto *instaPhoto = self.instaArray[indexPath.item];
             cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
                                                                   forIndexPath:indexPath];
-
+            
             [cell configureCellWithPhoto:instaPhoto];
-        }
             break;
+        }
     }
     return cell;
 }
