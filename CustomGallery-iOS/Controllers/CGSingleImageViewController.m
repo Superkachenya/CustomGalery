@@ -54,19 +54,11 @@
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    CGFloat scaleWidth;
-    CGFloat scaleHeight;
-    CGFloat minScale;
+    
     CGSize imageSize = self.imageView.image.size;
-    if (size.height > size.width) {
-         scaleWidth = size.width / imageSize.width;
-         scaleHeight = size.height / imageSize.height;
-         minScale = MIN(scaleWidth, scaleHeight);
-    } else {
-        scaleWidth = size.height / imageSize.height;
-        scaleHeight = size.width    / imageSize.width;
-        minScale = MIN(scaleWidth, scaleHeight);
-    }
+    CGFloat scaleWidth = size.width / imageSize.width;
+    CGFloat scaleHeight = size.height / imageSize.height;
+    CGFloat minScale = MIN(scaleWidth, scaleHeight);
     self.scrollView.minimumZoomScale = minScale;
     self.scrollView.maximumZoomScale = 1.0f;
     self.scrollView.zoomScale = minScale;
