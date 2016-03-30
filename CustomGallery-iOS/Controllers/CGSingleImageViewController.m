@@ -18,6 +18,8 @@
 
 @implementation CGSingleImageViewController
 
+#pragma mark - UIViewLifeCycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

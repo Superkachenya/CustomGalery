@@ -35,7 +35,7 @@ NSUInteger const kLoadedphotos = 21;
 
 @implementation CGGridViewController
 
-#pragma mark - View lifeCycle
+#pragma mark - UIViewLifeCycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
