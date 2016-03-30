@@ -46,11 +46,9 @@ typedef void(^CGGalleryPermissions)(BOOL status);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     copyBlock (images);
                 });
-            } else {
-                NSLog(@"NOOOOOOOOOOOO!!!!!!!");
             }
         }];
-
+        
         
     });
 }
@@ -64,12 +62,12 @@ typedef void(^CGGalleryPermissions)(BOOL status);
             break;
         case PHAuthorizationStatusNotDetermined: {
             [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus authorizationStatus) {
-                 if (authorizationStatus == PHAuthorizationStatusAuthorized) {
-                     copyBlock(YES);
-                 } else {
-                     copyBlock(NO);
-                 }
-             }];
+                if (authorizationStatus == PHAuthorizationStatusAuthorized) {
+                    copyBlock(YES);
+                } else {
+                    copyBlock(NO);
+                }
+            }];
             break;
         }
         default:
