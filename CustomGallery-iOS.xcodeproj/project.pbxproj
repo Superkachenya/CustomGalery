@@ -15,7 +15,6 @@
 		8ED9573F1C9AA893000C0C15 /* CGGallerySource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9573E1C9AA893000C0C15 /* CGGallerySource.m */; };
 		8ED957431C9AA8B6000C0C15 /* CGNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED957421C9AA8B6000C0C15 /* CGNetworkManager.m */; };
 		8ED957461C9AEB00000C0C15 /* CGInstaPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED957451C9AEB00000C0C15 /* CGInstaPhoto.m */; };
-		8ED957491C9B04B8000C0C15 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 8ED957481C9B04B8000C0C15 /* File */; };
 		8EE36DED1C9319B500369F80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE36DEC1C9319B500369F80 /* main.m */; };
 		8EE36DF01C9319B500369F80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE36DEF1C9319B500369F80 /* AppDelegate.m */; };
 		8EE36DF61C9319B500369F80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE36DF41C9319B500369F80 /* Main.storyboard */; };
@@ -54,7 +53,6 @@
 		8ED957421C9AA8B6000C0C15 /* CGNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGNetworkManager.m; path = Model/CGNetworkManager.m; sourceTree = "<group>"; };
 		8ED957441C9AEB00000C0C15 /* CGInstaPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CGInstaPhoto.h; path = Model/CGInstaPhoto.h; sourceTree = "<group>"; };
 		8ED957451C9AEB00000C0C15 /* CGInstaPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CGInstaPhoto.m; path = Model/CGInstaPhoto.m; sourceTree = "<group>"; };
-		8ED957481C9B04B8000C0C15 /* File */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
 		8EE36DE81C9319B400369F80 /* CustomGallery-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CustomGallery-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EE36DEC1C9319B500369F80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8EE36DEE1C9319B500369F80 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 				8EE36DF91C9319B500369F80 /* LaunchScreen.storyboard */,
 				8EE36DFC1C9319B500369F80 /* Info.plist */,
 				8EE36DEB1C9319B400369F80 /* Supporting Files */,
-				8ED957481C9B04B8000C0C15 /* File */,
 			);
 			path = "CustomGallery-iOS";
 			sourceTree = "<group>";
@@ -313,7 +310,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8ED957491C9B04B8000C0C15 /* File in Resources */,
 				8EE36DFB1C9319B500369F80 /* LaunchScreen.storyboard in Resources */,
 				8EE36DF81C9319B500369F80 /* Assets.xcassets in Resources */,
 				8EE36DF61C9319B500369F80 /* Main.storyboard in Resources */,

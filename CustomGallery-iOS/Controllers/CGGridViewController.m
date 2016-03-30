@@ -20,6 +20,8 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
     CGSegmentedControlTypeInstagram
 };
 
+NSUInteger const kLoadedphotos = 21;
+
 @interface CGGridViewController ()
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -36,7 +38,8 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.offset = 21;
+    self.offset = kLoadedphotos;
+    
     [self downloadFromNetwork];
     [self downloadFromGallery];
 }
@@ -66,23 +69,21 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
     CGPhotoCell *cell = nil;
     UIImage *image = nil;
     switch (self.CGSegmentedControl.selectedSegmentIndex) {
-        case CGSegmentedControlTypeGallery:
+        case CGSegmentedControlTypeGallery: {
             image = self.galleryArray[indexPath.item];
             cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
                                                                   forIndexPath:indexPath];
             [cell configureCellWithImage:image];
+        }
             break;
-        case CGSegmentedControlTypeInstagram :
-            if (indexPath.row >= self.instaArray.count) {
-                cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoLoadingIdentifier
-                                                                      forIndexPath:indexPath];
-                [cell.activity startAnimating];
-            } else {
-                CGInstaPhoto *instaPhoto = self.instaArray[indexPath.item];
-                cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
-                                                                      forIndexPath:indexPath];
-                [cell configureCellWithPhoto:instaPhoto];
-            }
+        case CGSegmentedControlTypeInstagram : {
+            CGInstaPhoto *instaPhoto = self.instaArray[indexPath.item];
+            cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
+                                                                  forIndexPath:indexPath];
+
+            [cell configureCellWithPhoto:instaPhoto];
+        }
+            break;
     }
     return cell;
 }
@@ -90,7 +91,7 @@ NS_ENUM(NSInteger, CGSegmentedControlTypes) {
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == self.instaArray.count - 1) {
         if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeInstagram) {
-            self.offset += self.offset;
+            self.offset += kLoadedphotos;
             [self downloadFromNetwork];
         }
     }

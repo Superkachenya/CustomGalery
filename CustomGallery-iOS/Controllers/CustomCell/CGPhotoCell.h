@@ -11,7 +11,6 @@
 
 @interface CGPhotoCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 
 - (void)configureCellWithImage:(UIImage *)photo;
 - (void)configureCellWithPhoto:(CGInstaPhoto *)photo;

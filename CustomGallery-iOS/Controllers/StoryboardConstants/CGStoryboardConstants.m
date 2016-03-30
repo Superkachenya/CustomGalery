@@ -9,6 +9,5 @@
 #import "CGStoryboardConstants.h"
 
 NSString * const kPhotoCellIdentifier    = @"kPhotoCellIdentifier";
-NSString * const kPhotoLoadingIdentifier = @"kPhotoLoadingIdentifier";
 
 NSString *const toPhotoPresentationVC    = @"toPhotoPresentationVC";

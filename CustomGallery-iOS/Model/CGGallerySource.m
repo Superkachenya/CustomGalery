@@ -30,15 +30,13 @@
         PHFetchResult *result = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage options:nil];
         PHImageManager *manager = [PHImageManager defaultManager];
         NSMutableArray *images = [NSMutableArray arrayWithCapacity:[result count]];
-        __block UIImage *ima;
         for (PHAsset *asset in result) {
             [manager requestImageForAsset:asset
                                targetSize:PHImageManagerMaximumSize
                               contentMode:PHImageContentModeDefault
                                   options:requestOptions
                             resultHandler:^void(UIImage *image, NSDictionary *info) {
-                                ima = image;
-                                [images addObject:ima];
+                                [images addObject:image];
                             }];
         }
         dispatch_async(dispatch_get_main_queue(), ^{

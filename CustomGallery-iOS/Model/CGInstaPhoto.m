@@ -7,7 +7,6 @@
 //
 
 #import "CGInstaPhoto.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation CGInstaPhoto
 
