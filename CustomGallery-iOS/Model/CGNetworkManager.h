@@ -8,7 +8,7 @@
 
 @import Foundation;
 
-typedef void(^Completion)(NSError *error, NSMutableArray *photos);
+typedef void(^Completion)(NSError *error, NSMutableArray *instaPhotos);
 
 @interface CGNetworkManager : NSObject
 

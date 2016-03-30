@@ -10,9 +10,12 @@
 
 @implementation CGInstaPhoto
 
-- (void)parsePhoto:(NSDictionary *)photo {
-    self.largePhotoURL = [NSURL URLWithString:[photo valueForKeyPath:@"standard_resolution.url"]];
-    self.thumbnailURL = [NSURL URLWithString:[photo valueForKeyPath:@"thumbnail.url"]];
+- (instancetype)initWithJSON:(NSDictionary *)JSON {
+    if (self = [super init]) {
+        self.largePhotoURL = [NSURL URLWithString:[JSON valueForKeyPath:@"standard_resolution.url"]];
+        self.thumbnailURL = [NSURL URLWithString:[JSON valueForKeyPath:@"thumbnail.url"]];
+    }
+    return self;
 }
 
 @end

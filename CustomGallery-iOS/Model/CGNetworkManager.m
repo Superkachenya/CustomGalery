@@ -40,8 +40,7 @@ NSString *const baseURL = @"https://api.instagram.com/v1/tags/nofilter/media/rec
         NSMutableArray *result = [NSMutableArray new];
         for (id post in data) {
             NSDictionary *image = (NSDictionary *)post[@"images"];
-            CGInstaPhoto *photo = [CGInstaPhoto new];
-            [photo parsePhoto:image];
+            CGInstaPhoto *photo = [[CGInstaPhoto alloc] initWithJSON:image];
             [result addObject:photo];
         }
         dispatch_async(dispatch_get_main_queue(), ^{

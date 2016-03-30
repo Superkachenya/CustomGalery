@@ -104,10 +104,11 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="1mL-wu-lxK">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" red="0.55637668382160177" green="0.70570696193174176" blue="0.86336137820512815" alpha="0.69641702586206899" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="YOf-Si-Ox4" id="0gJ-at-BqI"/>
-                                    <outletCollection property="gestureRecognizers" destination="gJw-fM-Do6" appends="YES" id="LzD-G9-rHZ"/>
+                                    <outletCollection property="gestureRecognizers" destination="cvx-zn-LpL" appends="YES" id="g4u-xs-7hO"/>
                                 </connections>
                             </scrollView>
                         </subviews>
@@ -125,9 +126,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Msw-CJ-cgq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="gJw-fM-Do6">
+                <tapGestureRecognizer id="cvx-zn-LpL">
                     <connections>
-                        <action selector="handleTapEvent:" destination="YOf-Si-Ox4" id="Tbp-Oe-16k"/>
+                        <action selector="handleTapEvent:" destination="YOf-Si-Ox4" id="8KH-2q-1JV"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

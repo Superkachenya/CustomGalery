@@ -13,7 +13,6 @@
 @property (strong, nonatomic) NSURL *largePhotoURL;
 @property (strong, nonatomic) NSURL *thumbnailURL;
 
-- (void)parsePhoto:(NSDictionary *)photo;
-
+- (instancetype)initWithJSON:(NSDictionary *)JSON;
 
 @end
