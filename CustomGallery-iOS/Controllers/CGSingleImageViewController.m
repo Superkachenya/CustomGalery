@@ -113,4 +113,13 @@
     [self centerScrollViewContents];
 }
 
+- (IBAction)handleTapEvent:(UITapGestureRecognizer *)sender {
+    if (!self.navigationController.navigationBarHidden) {
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+    } else {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    }
+
+}
+
 @end

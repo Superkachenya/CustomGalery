@@ -107,6 +107,7 @@
                                 <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="YOf-Si-Ox4" id="0gJ-at-BqI"/>
+                                    <outletCollection property="gestureRecognizers" destination="gJw-fM-Do6" appends="YES" id="LzD-G9-rHZ"/>
                                 </connections>
                             </scrollView>
                         </subviews>
@@ -124,6 +125,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Msw-CJ-cgq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="gJw-fM-Do6">
+                    <connections>
+                        <action selector="handleTapEvent:" destination="YOf-Si-Ox4" id="Tbp-Oe-16k"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1876" y="453"/>
         </scene>
