@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KHE-4t-PNf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KHE-4t-PNf">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--My Photos-->
@@ -14,11 +15,10 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="K6c-5w-xJ4">
-                                <rect key="frame" x="0.0" y="64" width="600" height="29"/>
                                 <segments>
                                     <segment title="Gallery"/>
                                     <segment title="Instagram"/>
@@ -28,8 +28,7 @@
                                 </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Vue-lf-DPd">
-                                <rect key="frame" x="0.0" y="92" width="600" height="508"/>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Gwj-Dy-6MN">
                                     <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -45,11 +44,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="av7-Yb-cyB">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                    <color key="backgroundColor" red="0.7668833892617436" green="0.88464765100671117" blue="0.90763947147651003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.7668833892617436" green="0.88464765100671117" blue="0.90763947147651003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="av7-Yb-cyB" secondAttribute="trailing" id="RIJ-gL-VjG"/>
@@ -69,7 +66,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Vue-lf-DPd" firstAttribute="top" secondItem="K6c-5w-xJ4" secondAttribute="bottom" id="BaO-hs-Jhb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Vue-lf-DPd" secondAttribute="bottom" id="HG9-Xm-nc5"/>
@@ -99,20 +96,19 @@
                         <viewControllerLayoutGuide type="bottom" id="mQC-Lg-95Z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aCv-WU-xgd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="1mL-wu-lxK">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" red="0.55637668382160177" green="0.70570696193174176" blue="0.86336137820512815" alpha="0.69641702586206899" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.55637668382160177" green="0.70570696193174176" blue="0.86336137820512815" alpha="0.69641702586206899" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="YOf-Si-Ox4" id="0gJ-at-BqI"/>
-                                    <outletCollection property="gestureRecognizers" destination="cvx-zn-LpL" appends="YES" id="g4u-xs-7hO"/>
+                                    <outletCollection property="gestureRecognizers" destination="Qsl-cv-mTQ" appends="YES" id="KZg-ka-dDX"/>
                                 </connections>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="mQC-Lg-95Z" firstAttribute="top" secondItem="1mL-wu-lxK" secondAttribute="bottom" id="0gP-V5-hEm"/>
@@ -126,9 +122,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Msw-CJ-cgq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="cvx-zn-LpL">
+                <tapGestureRecognizer id="Qsl-cv-mTQ">
                     <connections>
-                        <action selector="handleTapEvent:" destination="YOf-Si-Ox4" id="8KH-2q-1JV"/>
+                        <action selector="handleTapEvent:" destination="YOf-Si-Ox4" id="OCJ-XT-Yjg"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

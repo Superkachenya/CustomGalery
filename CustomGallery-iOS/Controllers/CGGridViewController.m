@@ -64,30 +64,29 @@ NSUInteger const kLoadedphotos = 21;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGPhotoCell *cell = nil;
     UIImage *image = nil;
+    CGInstaPhoto *instaPhoto = nil;
     switch (self.CGSegmentedControl.selectedSegmentIndex) {
-        case CGSegmentedControlTypeGallery: {
+        case CGSegmentedControlTypeGallery:
             image = self.galleryArray[indexPath.item];
             cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
                                                                   forIndexPath:indexPath];
             [cell configureCellWithImage:image];
             break;
-        }
-            
-        case CGSegmentedControlTypeInstagram : {
-            CGInstaPhoto *instaPhoto = self.instaArray[indexPath.item];
+        case CGSegmentedControlTypeInstagram:
+            instaPhoto = self.instaArray[indexPath.item];
             cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:kPhotoCellIdentifier
                                                                   forIndexPath:indexPath];
-            
             [cell configureCellWithPhoto:instaPhoto];
             break;
-        }
     }
     return cell;
 }
 
+#pragma mark - UICollectionViewDelegate
+
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == self.instaArray.count - 1) {
-        if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeInstagram) {
+    if (self.CGSegmentedControl.selectedSegmentIndex == CGSegmentedControlTypeInstagram) {
+        if (indexPath.row == self.instaArray.count - 1) {
             self.offset += kLoadedphotos;
             [self downloadFromNetwork];
         }
@@ -110,18 +109,17 @@ NSUInteger const kLoadedphotos = 21;
 }
 
 - (void)downloadFromNetwork {
-    [[CGNetworkManager sharedManager] downloadPhotosWithCompletionBlock:^(NSError *error, NSMutableArray *photos) {
+    [[CGNetworkManager sharedManager] downloadPhotosWithCompletionBlock:^(NSError *error, NSMutableArray *instaPhotos) {
         if (error) {
             [self initiateAlertWithError:error];
         } else {
             if (!self.instaArray) {
                 self.instaArray = [NSMutableArray new];
             }
-            [self.instaArray addObjectsFromArray:photos];
+            [self.instaArray addObjectsFromArray:instaPhotos];
             [self.collectionView reloadData];
         }
     }];
-    
 }
 
 - (void)downloadFromGallery {
@@ -135,6 +133,7 @@ NSUInteger const kLoadedphotos = 21;
 }
 
 - (IBAction)segmentedControlDidChangeIndex:(id)sender {
+    
     [self.collectionView reloadData];
 }
 

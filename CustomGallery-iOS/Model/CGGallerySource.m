@@ -70,9 +70,11 @@ typedef void(^CGGalleryPermissions)(BOOL status);
             }];
             break;
         }
-        default:
+        default: {
             copyBlock(NO);
             break;
+        }
     }
 }
+
 @end
